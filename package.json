@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "serve:local": "ng serve",
+    "serve:local-en": "ng serve --configuration=en-us",
     "build": "ng build",
     "test": "ng test"
   },
