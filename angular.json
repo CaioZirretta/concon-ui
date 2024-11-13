@@ -5,10 +5,23 @@
   "projects": {
     "concon-ui": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "cc",
+      "i18n": {
+        "sourceLocale": "pt-BR",
+        "locales": {
+          "en-US": {
+            "translation": "src/assets/i18n/translation.en.json",
+            "baseHref": "en-US"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -41,13 +54,16 @@
             "styles": [
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-              "src/styles.css"
+              "src/styles.css",
+              "src/bootstrap.css"
             ],
             "scripts": []
           },
           "configurations": {
             "en-us": {
-              "localize": ["en-US"]
+              "localize": [
+                "en-US"
+              ]
             },
             "production": {
               "budgets": [
@@ -109,15 +125,6 @@
               "src/styles.css"
             ],
             "scripts": []
-          }
-        }
-      },
-      "i18n": {
-        "sourceLocale": "pt-BR",
-        "locales": {
-          "en-US": {
-            "translation": "src/assets/i18n/translation.en.json",
-            "baseHref": "en-US"
           }
         }
       }
