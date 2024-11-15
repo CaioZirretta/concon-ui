@@ -8,12 +8,14 @@
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "cc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "localize": true,
+            "i18nMissingTranslation": "error",
+            "i18nDuplicateTranslation": "warning",
             "outputPath": "dist/concon-ui",
             "index": "src/index.html",
             "browser": "src/main.ts",
