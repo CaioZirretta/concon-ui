@@ -10,4 +10,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'concon-ui';
+
+  teste(a: number, b: number){
+    var t = [a,,b]
+  }
 }
