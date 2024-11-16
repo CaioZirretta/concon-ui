@@ -4,7 +4,7 @@ import { NotFoundPageComponent } from './home/not-found/pages/not-found-page/not
 
 export const routes: Routes = [
   {
-    path: '/',
+    path: '',
     component: LoginPageComponent
   },
   {

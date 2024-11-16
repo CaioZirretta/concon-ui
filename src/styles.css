@@ -1,1 +1,81 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /*
+    Colors
+  */
+  --white: #FEFCFB;
+  --lavander: #DAD4EF;
+  --battleship-gray: #818D92;
+  --gray: #7A7978;
+  --davys-gray: #5F5B6B;
+  --jet: #323031;
+  --powder-blue: #B4C5E4;
+  --vista-blue: #7A9CC6;
+  --jordy-blue: #8AC4FF;
+  --non-photo-blue: #8DE4FF;
+  --cerulean: #1282A2;
+  --teal: #177E89;
+  --cambridge-blue: #87CBAC;
+  --aquamarine: #90FFDC;
+  --caribbean-current: #08605F;
+  --indigo-dye: #034078;
+  --pen-blue: #001F54;
+  /*
+    Font
+  */
+  --font-family-thin: Noto-Thin;
+  --font-family-extra-light: Noto-Extra-Light;
+  --font-family-condensed-light: Noto-Condensed-Light;
+  --font-family-light: Noto-Light;
+  --font-family-regular: Noto;
+  --font-family-bold: Noto-Bold;
+
+  --font-size-regular: 1rem;
+
+  --line-height-regular: 100%;
+  --line-height-large: 110%;
+  --line-height-xl: 120%;
+  --line-height-2xl: 130%;
+  --line-height-3xl: 140%;
+  --line-height-4xl: 150%;
+  --line-height-5xl: 160%;
+  --line-height-6xl: 170%;
+  --line-height-7xl: 180%;
+  --line-height-8xl: 190%;
+  --line-height-9xl: 200%;
+
+  /*
+    Spacing
+  */
+  --tiny-spacing: 0.125rem;
+  --small-spacing: 0.25rem;
+  --medium-spacing: 0.5rem;
+  --large-spacing: 1rem;
+  --xl-spacing: 1.5rem;
+  --2xl-spacing: 2rem;
+  --3xl-spacing: 2.5rem;
+  --4xl-spacing: 3rem;
+  --5xl-spacing: 3.5rem;
+  --6xl-spacing: 4rem;
+
+  /*
+    Border-radius
+  */
+  --border-radius-small: var(--small-spacing);
+  --border-radius-medium: var(--medium-spacing);
+  --border-radius-large: var(--large-spacing);
+  --border-radius-extra-large: var(--xl-spacing);
+}
+
+*, :before, :after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-regular), sans-serif;
+  color: var(--jet);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  text-align: left
+}
