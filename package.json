@@ -6,6 +6,7 @@
     "serve:local-en": "ng serve --configuration=en-us",
     "extract-i18n": "ng extract-i18n --format=json --output-path src/assets/i18n --out-file translation.en.json",
     "build": "ng build",
+    "build dev": "ng build --configuration development",
     "test": "ng test",
     "lint": "ng lint"
   },
