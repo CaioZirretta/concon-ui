@@ -30,7 +30,7 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
-      "array-callback-return": ["warning", "checkForEach"],
+      "array-callback-return": ["warn", { "checkForEach": true }],
       "no-class-assign": "error",
       "no-cond-assign": "error",
       "no-const-assign": "error",
@@ -52,9 +52,9 @@ module.exports = tseslint.config(
       "no-unused-private-class-members": "error",
       "no-unused-vars": "error",
       "curly": "error",
-      "eqeqeq": "error",
+      "eqeqeq": ["error", "always", { "null": "ignore" }],
       "max-classes-per-file": ["error", 1],
-      "max-statements": ["warn", 5],
+      "max-statements": "warn",
       "max-len": [
         "error",
         {
@@ -68,14 +68,12 @@ module.exports = tseslint.config(
       "no-alert": "error",
       "no-bitwise": "warn",
       "no-console": "warn",
-      "no-empty": "error",
-      "no-empty-function": "error",
+      "no-empty-function": ["error", { "allow": ["arrowFunctions"] }],
       "no-extra-label": "error",
       "no-inline-comments": "error",
       "no-iterator": "error",
       "no-labels": "error",
       "no-lone-blocks": "error",
-      "no-magic-numbers": "error",
       "no-multi-assign": "error",
       "no-nested-ternary": "error",
       "no-new-wrappers": "error",
@@ -87,31 +85,9 @@ module.exports = tseslint.config(
       "yoda": "error",
       "no-shadow": "warn",
       "operator-assignment": "warn",
-      "@typescript-eslint/ban-types": [
-        "error",
-        {
-          "types": {
-            "Object": {
-              "message": "Avoid using the `Object` type. Did you mean `object`?"
-            },
-            "Function": {
-              "message": "Avoid using the `Function` type. Prefer a specific function type, like `() => void`."
-            },
-            "Boolean": {
-              "message": "Avoid using the `Boolean` type. Did you mean `boolean`?"
-            },
-            "Number": {
-              "message": "Avoid using the `Number` type. Did you mean `number`?"
-            },
-            "String": {
-              "message": "Avoid using the `String` type. Did you mean `string`?"
-            },
-            "Symbol": {
-              "message": "Avoid using the `Symbol` type. Did you mean `symbol`?"
-            }
-          }
-        }
-      ]
+      "@typescript-eslint/no-wrapper-object-types": "error",
+      "@typescript-eslint/no-unused-expressions": ["warn", { allowShortCircuit: true }],
+      "@typescript-eslint/consistent-type-definitions": ["warn", "type"]
     },
   },
   {
