@@ -8,8 +8,7 @@
     "build": "ng build",
     "build dev": "ng build --configuration development",
     "test": "ng test",
-    "lint": "ng lint",
-    "server:mock": "json-server --watch backend/db.json"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
