@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of, take, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { SessionService } from '../../shared/service/session.service';
+import { SessionService } from '../../../shared/services/session.service';
 import { TuiAlertService } from '@taiga-ui/core';
 
 export type UserLoginReq = {

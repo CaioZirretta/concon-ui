@@ -1,10 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { LoginService, UserLoginReq } from '../service/login.service';
-import { SessionService } from '../../../shared/service/session.service';
+import { LoginService, UserLoginReq } from '../../services/login.service';
+import { SessionService } from '../../../../shared/services/session.service';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TuiAlert, TuiAlertService } from '@taiga-ui/core';
 
 @Component({
-    selector: 'cc-login-page',
+    selector: 'cc-login',
   imports: [
     ReactiveFormsModule
   ],
@@ -13,15 +15,20 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators }
     providers: [LoginService, SessionService]
 })
 export class LoginPageComponent implements OnInit{
-  private readonly loginService: LoginService = inject(LoginService);
-  private readonly formBuilder: UntypedFormBuilder = inject(UntypedFormBuilder);
+  private readonly loginService = inject(LoginService);
+  private readonly formBuilder = inject(UntypedFormBuilder);
+  private readonly router = inject(Router);
+  private readonly alert = inject(TuiAlertService);
 
   protected form: UntypedFormGroup = this.formBuilder.group({
-    username: [ '', [ Validators.required, Validators.min(1) ] ],
-    password: [ '', [ Validators.required ], Validators.min(8) ],
+    username: ['', [Validators.required, Validators.min(1)]],
+    password: ['', [Validators.required, Validators.min(8)]],
   });
 
   ngOnInit() {
+    if (this.loginService.isAuthenticated()) {
+      void this.router.navigate(['/']);
+    }
   }
 
   login(): void {
