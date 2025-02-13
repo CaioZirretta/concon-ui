@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of, take, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { SessionService } from '../../../shared/service/session.service';
+import { SessionService } from '../../shared/service/session.service';
 import { TuiAlertService } from '@taiga-ui/core';
 
 export type UserLoginReq = {
@@ -20,13 +20,14 @@ export class LoginService {
   private readonly sessionService: SessionService = inject(SessionService);
   private readonly alerts = inject(TuiAlertService);
 
-  private readonly url: string = '/login';
+  private readonly urlLogin: string = '/login';
+  private readonly urlLogout: string = '/login';
 
   login(user: UserLoginReq): Observable<boolean> {
-    // return this.http.post<UserLoginRes>(this.url, user)
+    // return this.http.post<UserLoginRes>(this.urlLogin, user)
     return of<UserLoginRes>({
-      sessionToken: "123",
-      userToken: "456"
+      sessionToken: "ST-123",
+      userToken: "UT-456"
     })
       .pipe(
         take(1),
@@ -39,7 +40,7 @@ export class LoginService {
           const sessionSuccess: boolean = this.sessionService.createSession(sessionToken, userToken);
 
           if (!sessionSuccess) {
-            this.alerts.open('Houve um erro ao realizar o login.', { label: 'Erro' }).subscribe();
+            this.alerts.open('Houve um erro ao realizar o login.', { label: 'Erro' }).subscribe().unsubscribe();
             return false;
           }
 
@@ -49,8 +50,21 @@ export class LoginService {
   }
 
   logout(): Observable<boolean> {
-    // const userToken = this.sessionService.getSessionToken()
-    // return this.http.post(userToken)
+    // const token = ...
+
+    // return this.http.post(token, this.urlLogout)
+    //   .pipe(
+    //     catchError(error => {
+    //       return throwError(() => error);
+    //     }),
+    //     map(() => this.sessionService.destroySession())
+    //   )
+
+    this.sessionService.destroySession();
     return of(true);
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.isSessionCreated();
   }
 }
