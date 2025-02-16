@@ -1,21 +1,23 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { LoginService, UserLoginReq } from '../../services/login.service';
-import { SessionService } from '../../../../shared/services/session.service';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TuiAlert, TuiAlertService } from '@taiga-ui/core';
+import { TuiAlertService } from '@taiga-ui/core';
+import { UnsubscribeService } from '../../../../shared/services/unsubscribe.service';
+import { takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'cc-login',
+    selector: 'cc-login-page',
   imports: [
     ReactiveFormsModule
   ],
     templateUrl: './login-page.component.html',
     styleUrl: './login-page.component.css',
-    providers: [LoginService, SessionService]
+    providers: [LoginService, UnsubscribeService]
 })
-export class LoginPageComponent implements OnInit{
+export class LoginPageComponent implements OnInit, OnDestroy {
   private readonly loginService = inject(LoginService);
+  private readonly unsubscribeService = inject(UnsubscribeService);
   private readonly formBuilder = inject(UntypedFormBuilder);
   private readonly router = inject(Router);
   private readonly alert = inject(TuiAlertService);
@@ -31,9 +33,14 @@ export class LoginPageComponent implements OnInit{
     }
   }
 
+  ngOnDestroy() {
+  }
+
   login(): void {
     if (!this.form.valid) {
-      alert("invalid");
+      this.alert.open("Notification")
+        .pipe(takeUntil(this.unsubscribeService.destroy))
+        .subscribe();
     }
 
     const payload: UserLoginReq = {
@@ -42,6 +49,7 @@ export class LoginPageComponent implements OnInit{
     }
 
     this.loginService.login(payload)
+      .pipe(takeUntil(this.unsubscribeService.destroy))
       .subscribe({
         next: (result) => {},
       })

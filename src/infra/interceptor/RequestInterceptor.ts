@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const apiRequest = req.clone({ url: environment.apiUrl });
 
     return next.handle(apiRequest);
