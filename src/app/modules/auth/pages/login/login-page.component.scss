@@ -1,0 +1,35 @@
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+    filter: blur(4px);
+  }
+
+  .container {
+    display: flex;
+
+    & > div {
+      padding: var(--spacing-4) var(--spacing-6);
+    }
+
+    &__notice {
+      width: 200px;
+      background-color: #90FFDC;
+    }
+
+    &__login {
+      &__form {
+        display:flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

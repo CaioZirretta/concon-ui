@@ -3,16 +3,18 @@ import { LoginService, UserLoginReq } from '../../services/login.service';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TuiAlertService } from '@taiga-ui/core';
-import { UnsubscribeService } from '../../../../shared/services/unsubscribe.service';
+import { UnsubscribeService } from '@shared/services/unsubscribe.service';
 import { takeUntil } from 'rxjs';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
     selector: 'cc-login-page',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
     templateUrl: './login-page.component.html',
-    styleUrl: './login-page.component.css',
+    styleUrl: './login-page.component.scss',
     providers: [LoginService, UnsubscribeService]
 })
 export class LoginPageComponent implements OnInit, OnDestroy {
@@ -51,7 +53,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.loginService.login(payload)
       .pipe(takeUntil(this.unsubscribeService.destroy))
       .subscribe({
-        next: (result) => {},
+        next: () => {},
       })
   }
 

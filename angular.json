@@ -5,7 +5,11 @@
   "projects": {
     "concon-ui": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "cc",
@@ -41,13 +45,14 @@
               }
             ],
             "styles": [
+              "src/styles.scss",
+              "src/lib/styles/bootstrap.scss",
+              "src/assets/fonts/fonts.scss",
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-              "src/styles.css",
-              "src/lib/styles/bootstrap.css",
-              "src/assets/fonts/fonts.css"
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
             ],
-            "scripts": []
+            "scripts": [],
+            "inlineStyleLanguage": "scss"
           },
           "configurations": {
             "en-us": {

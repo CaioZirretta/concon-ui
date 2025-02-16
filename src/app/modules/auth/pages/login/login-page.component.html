@@ -1,8 +1,21 @@
-<form [formGroup]="form">
-  Login:
-  <input formControlName="username">
-  Senha:
-  <input formControlName="password">
+<section>
+  <img class="background" ngSrc="/img/home-background.png" fill placeholder/>
 
-  <button (click)="login()">Login</button>
-</form>
+  <div class="container">
+    <div class="container__notice"></div>
+
+    <div class="container__login">
+      <form class="container__login__form" [formGroup]="form">
+        Login:
+        <input formControlName="username">
+        Senha:
+        <input formControlName="password">
+
+        <button (click)="login()">Login</button>
+      </form>
+    </div>
+  </div>
+
+
+
+</section>
