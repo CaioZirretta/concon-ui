@@ -4,7 +4,7 @@ import { CCNotFound } from '@/components/utils/CCNotFound.tsx';
 
 export function CCRoutes() {
   return useRoutes([
-    { path: '/', element: <HomePage /> },
+    { path: '/home', element: <HomePage /> },
     { path: '*', element: <CCNotFound /> }
   ]);
 }

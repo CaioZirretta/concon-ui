@@ -3,6 +3,7 @@ import { CCHeader } from '@/components/layout/header/CCHeader.tsx';
 import { SidebarProvider } from '@/components/ui/sidebar.tsx';
 import { CCSidebar } from '@/components/layout/sidebar/CCSidebar.tsx';
 import { CCRoutes } from '@/CCRoutes.tsx';
+import { RouteWrapper } from '@/components/utils/RouteWrapper.tsx';
 
 export function App() {
   return (
@@ -10,11 +11,11 @@ export function App() {
       <SidebarProvider className="fixed w-fit" defaultOpen={false}>
         <CCHeader/>
         <CCSidebar/>
-      </SidebarProvider>
 
-      <div className="pt-10 pl-12">
+      <RouteWrapper className="pt-10">
         <CCRoutes></CCRoutes>
-      </div>
+      </RouteWrapper>
+      </SidebarProvider>
     </BrowserRouter>
   );
 }
