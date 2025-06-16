@@ -57,7 +57,9 @@ export function CCSidebar() {
   }
 
   return (
-    <Sidebar variant="sidebar" collapsible="icon">
+    <Sidebar variant="sidebar" collapsible="icon"
+             // onMouseEnter={() => sidebar.setOpen(true)} onMouseLeave={() => sidebar.setOpen(false)}
+    >
       <SidebarHeader>Teste</SidebarHeader>
       <SidebarContent className="pt-8">
         <SidebarGroup>
