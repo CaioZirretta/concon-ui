@@ -12,9 +12,9 @@ export function App() {
         <CCHeader/>
         <CCSidebar/>
 
-      <RouteWrapper className="pt-10">
-        <CCRoutes></CCRoutes>
-      </RouteWrapper>
+        <RouteWrapper className="pt-10">
+          <CCRoutes></CCRoutes>
+        </RouteWrapper>
       </SidebarProvider>
     </BrowserRouter>
   );

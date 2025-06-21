@@ -24,9 +24,9 @@ export function CCHeader() {
         <DropdownMenuContent>
           <DropdownMenuLabel>Notificações</DropdownMenuLabel>
           <DropdownMenuGroup>
-            <DropdownMenuItem><span className="font-bold">2</span> Novas Reservas</DropdownMenuItem>
-            <DropdownMenuItem><span className="font-bold">1</span> Novo Anúncio</DropdownMenuItem>
-            <DropdownMenuItem><span className="font-bold">4</span> Pagamentos Pendentes</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer"><span className="font-bold">2</span> Novas Reservas</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer"><span className="font-bold">1</span> Novo Anúncio</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer"><span className="font-bold">4</span> Pagamentos Pendentes</DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -43,11 +43,11 @@ export function CCHeader() {
         <DropdownMenuContent>
           <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
           <DropdownMenuGroup>
-            <DropdownMenuItem>Perfil</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">Perfil</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator/>
           <DropdownMenuGroup>
-            <DropdownMenuItem>Sair</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">Sair</DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
