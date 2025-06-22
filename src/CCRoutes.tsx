@@ -1,10 +1,10 @@
 import { useRoutes } from 'react-router-dom';
 import { HomePage } from '@/pages/home/HomePage.tsx';
-import { CCNotFound } from '@/components/utils/CCNotFound.tsx';
+import { CCNotFoundPage } from '@/pages/notfound/CCNotFoundPage.tsx';
 
 export function CCRoutes() {
   return useRoutes([
     { path: '/home', element: <HomePage /> },
-    { path: '*', element: <CCNotFound /> }
+    { path: '*', element: <CCNotFoundPage /> }
   ]);
 }

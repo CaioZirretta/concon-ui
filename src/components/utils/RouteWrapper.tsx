@@ -1,4 +1,5 @@
 import { useSidebar } from '@/components/ui/sidebar.tsx';
+import { cn } from '@/lib/utils/utils.ts';
 
 export type RouteWrapperProps = {
   children: React.ReactNode,
@@ -7,5 +8,5 @@ export type RouteWrapperProps = {
 
 export function RouteWrapper({ children, className }: RouteWrapperProps) {
   const sidebar = useSidebar();
-  return <div className={className} onClick={()=> sidebar.setOpen(false)}>{children}</div>;
+  return <section className={cn(className, 'mt-10')} onClick={()=> sidebar.setOpen(false)}>{children}</section>;
 }

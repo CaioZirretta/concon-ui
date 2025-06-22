@@ -12,7 +12,7 @@ export function App() {
         <CCHeader/>
         <CCSidebar/>
 
-        <RouteWrapper className="pt-10">
+        <RouteWrapper>
           <CCRoutes></CCRoutes>
         </RouteWrapper>
       </SidebarProvider>
