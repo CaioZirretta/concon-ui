@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu.tsx';
-import { user } from '@/lib/constants/user.constant.ts';
+import { user } from '@/pages/users/mocks/user.mock.ts';
 import { SidebarTrigger } from '@/components/ui/sidebar.tsx';
 import { MailIcon } from 'lucide-react';
 
