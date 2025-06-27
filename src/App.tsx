@@ -1,9 +1,9 @@
-import { BrowserRouter } from 'react-router-dom';
-import { CCHeader } from '@/components/layout/header/CCHeader.tsx';
-import { SidebarProvider } from '@/components/ui/sidebar.tsx';
-import { CCSidebar } from '@/components/layout/sidebar/CCSidebar.tsx';
 import { CCRoutes } from '@/CCRoutes.tsx';
-import { RouteWrapper } from '@/components/utils/RouteWrapper.tsx';
+import { CCHeader } from '@/components/layout/header/CCHeader.tsx';
+import { CCSidebar } from '@/components/layout/sidebar/CCSidebar.tsx';
+import { SidebarProvider } from '@/components/ui/sidebar.tsx';
+import { BrowserRouter } from 'react-router-dom';
+import { CCPageWrapper } from './components/utils/PageWrapper';
 
 export function App() {
   return (
@@ -12,9 +12,9 @@ export function App() {
         <CCHeader/>
         <CCSidebar/>
 
-        <RouteWrapper>
+        <CCPageWrapper>
           <CCRoutes></CCRoutes>
-        </RouteWrapper>
+        </CCPageWrapper>
       </SidebarProvider>
     </BrowserRouter>
   );
