@@ -11,23 +11,22 @@ import {
 import { useNavigate } from 'react-router-dom';
 import type { User } from '@/pages/users/types/User.type.ts';
 import { useState } from 'react';
+import { capitalizar } from '@/lib/utils/utils.ts';
 
 export function CCListUsersPage() {
   const [users, setUsers] = useState<User[]>(userList);
   const navigate = useNavigate();
 
-  console.log('render');
-
   function toggleActive(id: string) {
     setUsers(users.map(user => user.id === id ? { ...user, isActive: !user.isActive } : user));
   }
 
-  return <div className='mx-18'>
+  return <div className='mx-12'>
     <Table className="w-full">
       <TableCaption>Lista de usuários</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[200px]">Nome</TableHead>
+          <TableHead >Nome</TableHead>
           <TableHead>E-mail</TableHead>
           <TableHead>Permissões</TableHead>
           <TableHead className="text-center">Ativo</TableHead>
@@ -39,11 +38,13 @@ export function CCListUsersPage() {
           <TableRow key={user.id}>
             <TableCell>{user.name}</TableCell>
             <TableCell><a href={'mailto:' + user.email} type='email'>{user.email}</a></TableCell>
-            <TableCell>{user.roles.join(' ')}</TableCell>
-            <TableCell className="flex align-center justify-center">{user.isActive ?
-              <CheckIcon className="text-chart-2" size={20} /> :
-              <XIcon className="text-destructive" size={20} />
-            }</TableCell>
+            <TableCell>{capitalizar(user.roles[0])}</TableCell>
+            <TableCell className="flex align-center justify-center">
+              {user.isActive ?
+                <CheckIcon className="text-chart-2" size={20}/> :
+                <XIcon className="text-destructive" size={20}/>
+              }
+            </TableCell>
             <TableCell>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -51,8 +52,8 @@ export function CCListUsersPage() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
-                    <DropdownMenuItem onClick={() => { navigate(`/details/${user.id}`) }}>Detalhes</DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => { navigate(`/edit/${user.id}`) }}>Editar</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => { navigate(`details/${user.id}`) }}>Detalhes</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => { navigate(`edit/${user.id}`) }}>Editar</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => { toggleActive(user.id) }}>{user.isActive ? 'Inativar' : 'Ativar'}</DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>

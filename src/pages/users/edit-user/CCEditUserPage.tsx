@@ -1,3 +1,3 @@
 export function CCEditUserPage() {
-  return <></>
+  return <>Editar usuário</>
 }

@@ -1,12 +1,15 @@
-import { useRoutes } from 'react-router-dom';
+import { type RouteObject } from 'react-router-dom';
 import { CCEditUserPage } from '@/pages/users/edit-user/CCEditUserPage.tsx';
-import { CCNotFoundPage } from '@/pages/notfound/CCNotFoundPage.tsx';
+import { CCDetailsUserPage } from '@/pages/users/details-user/CCDetailsUserPage.tsx';
+import { CCUsersPage } from '@/pages/users/CCUsersPage.tsx';
 import { CCListUsersPage } from '@/pages/users/list-users/CCListUsersPage.tsx';
 
-export function CCUserRoutes() {
-  return useRoutes([
-    { path: '/', element: <CCListUsersPage /> },
-    { path: '/edit/:id', element: <CCEditUserPage /> },
-    { path: '*', element: <CCNotFoundPage /> }
-  ])
-}
+export const ccUserRoutes: RouteObject = {
+  path: '/users',
+  element: <CCUsersPage/>,
+  children: [
+    { index: true, element: <CCListUsersPage/> },
+    { path: 'details/:id', element: <CCDetailsUserPage/> },
+    { path: 'edit/:id', element: <CCEditUserPage/> },
+  ]
+};
