@@ -9,16 +9,20 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu.tsx';
 import { useNavigate } from 'react-router-dom';
-import type { User } from '@/pages/users/types/User.type.ts';
+import type { UserList } from '@/pages/users/types/User.type.ts';
 import { useState } from 'react';
 import { capitalizar } from '@/lib/utils/utils.ts';
 
 export function CCListUsersPage() {
-  const [users, setUsers] = useState<User[]>(userList);
+  const [users, setUsers] = useState<UserList[]>(userList);
   const navigate = useNavigate();
 
   function toggleActive(id: string) {
-    setUsers(users.map(user => user.id === id ? { ...user, isActive: !user.isActive } : user));
+    return () => setUsers(users.map(user => user.id === id ? { ...user, isActive: !user.isActive } : user));
+  }
+
+  function navigateTo(path: string, id?: string) {
+    return () => navigate(path, { state: id });
   }
 
   return <div className='mx-12'>
@@ -52,9 +56,9 @@ export function CCListUsersPage() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
-                    <DropdownMenuItem onClick={() => { navigate(`details/${user.id}`) }}>Detalhes</DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => { navigate(`edit/${user.id}`) }}>Editar</DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => { toggleActive(user.id) }}>{user.isActive ? 'Inativar' : 'Ativar'}</DropdownMenuItem>
+                    <DropdownMenuItem onClick={navigateTo(`details/${user.id}`, user.id)}>Detalhes</DropdownMenuItem>
+                    <DropdownMenuItem onClick={navigateTo(`edit/${user.id}`, user.id)}>Editar</DropdownMenuItem>
+                    <DropdownMenuItem onClick={toggleActive(user.id)}>{user.isActive ? 'Inativar' : 'Ativar'}</DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
               </DropdownMenu>
