@@ -1,10 +1,11 @@
-import type { User } from '@/pages/users/types/User.type.ts';
+import type { User, UserList } from '@/pages/users/types/User.type.ts';
+import { Gender } from '@/pages/users/enums/gender.enum.ts';
 
-export const user: Partial<User> = {
+export const user: Partial<UserList> = {
   name: 'Caio'
 }
 
-export const userList: User[] = [
+export const userList: UserList[] = [
   {
     id: "1",
     name: "João Silva",
@@ -90,3 +91,24 @@ export const userList: User[] = [
     isActive: false,
   },
 ];
+
+export const userMock: Omit<User, 'id'> = {
+  name: "Ana Carolina Silva",
+  email: "ana.silva@example.com",
+  roles: ["admin", "user"],
+  isActive: true,
+  avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+  gender: Gender.FEMALE,
+  phone: "+55 (11) 98765-4321",
+  residence: "Torre A",
+  building: "Jardim Paulista",
+  unit: "Ap 142B",
+  birthDate: "1985-08-22",
+  occupationTitle: "Arquiteta",
+  currentContractStart: "2023-01-15",
+  currentContractEnd: "2024-01-14",
+  lastAccess: "2023-11-15T14:30:22Z",
+  createdAt: "2022-05-10T09:15:33Z",
+  updatedAt: "2023-11-10T16:45:18Z",
+  updatedBy: "admin@system.com"
+};
