@@ -19,11 +19,11 @@ export function CCListUsersPage() {
   console.log('render');
 
   function toggleActive(id: string) {
-    setUsers(users.map(u => u.id === id ? {...u, isActive: !u.isActive} : u));
+    setUsers(users.map(user => user.id === id ? { ...user, isActive: !user.isActive } : user));
   }
 
-  return <>
-    <Table className="">
+  return <div className='mx-18'>
+    <Table className="w-full">
       <TableCaption>Lista de usuários</TableCaption>
       <TableHeader>
         <TableRow>
@@ -38,11 +38,11 @@ export function CCListUsersPage() {
         {users.map(user => (
           <TableRow key={user.id}>
             <TableCell>{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>{user.roles}</TableCell>
+            <TableCell><a href={'mailto:' + user.email} type='email'>{user.email}</a></TableCell>
+            <TableCell>{user.roles.join(' ')}</TableCell>
             <TableCell className="flex align-center justify-center">{user.isActive ?
-              <CheckIcon className="text-chart-2" size={20}/> :
-              <XIcon className="text-destructive" size={20}/>
+              <CheckIcon className="text-chart-2" size={20} /> :
+              <XIcon className="text-destructive" size={20} />
             }</TableCell>
             <TableCell>
               <DropdownMenu>
@@ -51,9 +51,9 @@ export function CCListUsersPage() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
-                    <DropdownMenuItem onClick={() => {navigate(`/details/${user.id}`)}}>Detalhes</DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => {navigate(`/edit/${user.id}`)}}>Editar</DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => {toggleActive(user.id)}}>{user.isActive ? 'Inativar' : 'Ativar'}</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => { navigate(`/details/${user.id}`) }}>Detalhes</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => { navigate(`/edit/${user.id}`) }}>Editar</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => { toggleActive(user.id) }}>{user.isActive ? 'Inativar' : 'Ativar'}</DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -61,5 +61,6 @@ export function CCListUsersPage() {
           </TableRow>
         ))}
       </TableBody>
-    </Table></>;
+    </Table>
+  </div>;
 }
