@@ -9,8 +9,8 @@ type CCDetailsUserFieldProps = {
 }
 
 export function CCDetailsUserField({ fieldName, fieldValue, className, children }: CCDetailsUserFieldProps) {
-  return <div className={cn(className, 'flex flex-col gap-2 max-w-[30%]')}>
-    <span className="font-bold text-lg">{fieldName}</span>
-    {children ?? <span>{fieldValue}</span>}
+  return <div className={cn(className, 'flex flex-col gap-2 max-w-44 break-after-all')}>
+    <span className="font-regular text-lg">{fieldName}</span>
+    {children ?? <span className="font-light">{fieldValue}</span>}
   </div>;
 }

@@ -1,4 +1,4 @@
-import { Loader } from 'lucide-react';
+import { CheckIcon, Loader, XIcon } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import type { User } from '@/pages/users/types/User.type.ts';
@@ -6,7 +6,8 @@ import { userMock } from '@/pages/users/mocks/user.mock.ts';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar.tsx';
 import { CCDetailsUserField } from '@/pages/users/components/details-user/components/CCDetailsUserField.tsx';
 import { CCDetailsUserLine } from '@/pages/users/components/details-user/components/CCDetailsUserLine.tsx';
-import { Gender } from '@/pages/users/enums/gender.enum.ts';
+import { fullGender } from '@/pages/users/enums/gender.enum.ts';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip.tsx';
 
 export function CCDetailsUserPage() {
   const { state } = useLocation();
@@ -21,30 +22,49 @@ export function CCDetailsUserPage() {
     setLoading(false);
   }, [state.id])
 
+  function isContractEnded(date: string): boolean {
+    return (new Date(date).getTime() <= Date.now());
+  }
+
   if (loading) {
     return <Loader></Loader>
   }
 
-  function fullGender(gender: Gender) {
-    switch (gender) {
-      case Gender.MALE: return 'Masculino';
-      case Gender.FEMALE: return 'Feminino';
-      default: return 'Outro';
-    }
-  }
-
   return <>
-    <div className="w-full mt-12 flex items-center gap-4">
+    <div className="w-full mt-12 flex items-center justify-around gap-6 bg-chart-2 p-4 rounded-xl">
       <Avatar className="size-12 border-2">
         <AvatarImage></AvatarImage>
         <AvatarFallback>?</AvatarFallback>
       </Avatar>
-      <span className="text-lg">{user?.name}</span>
+
+      <span className="text-lg text-accent">{user?.name}</span>
+
+      {user?.currentContractEnd &&
+        <Tooltip>
+          <TooltipTrigger>
+            {isContractEnded(user?.currentContractEnd) ?
+              (<XIcon className="p-1" color="var(--color-secondary)" size={32}/>) :
+              <CheckIcon color="var(--color-secondary)"/>}
+          </TooltipTrigger>
+          <TooltipContent>
+            {isContractEnded(user?.currentContractEnd) ?
+              <span>Contrato Encerrado em {user?.currentContractEnd}</span> :
+              <span>Contrato ativo até {user?.currentContractEnd}</span>}
+          </TooltipContent>
+        </Tooltip>}
     </div>
-    <CCDetailsUserLine className="flex-wrap">
-      <CCDetailsUserField fieldName='Telefone' fieldValue={user!.phone}/>
-      <CCDetailsUserField fieldName='E-mail' fieldValue={user!.email}/>
-      {user!.birthDate && <CCDetailsUserField fieldName="Dt. Nascimento" fieldValue={user!.birthDate}/>}
+
+    <CCDetailsUserLine>
+      <CCDetailsUserField fieldName='Ocupação' fieldValue={user?.occupationTitle}/>
+      <CCDetailsUserField fieldName='Residência' fieldValue={user?.residence}/>
+      <CCDetailsUserField fieldName='Região' fieldValue={user?.building}/>
+      <CCDetailsUserField fieldName='Unidade' fieldValue={user?.unit}/>
+    </CCDetailsUserLine>
+
+    <CCDetailsUserLine>
+      <CCDetailsUserField fieldName='Telefone' fieldValue={user?.phone}/>
+      <CCDetailsUserField fieldName='E-mail' fieldValue={user?.email}/>
+      {user?.birthDate && <CCDetailsUserField fieldName="Dt. Nascimento" fieldValue={user?.birthDate}/>}
       <CCDetailsUserField fieldName='Gênero' fieldValue={fullGender(user!.gender)}/>
     </CCDetailsUserLine>
   </>;

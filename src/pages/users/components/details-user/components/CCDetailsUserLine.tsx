@@ -7,5 +7,5 @@ type CCDetailsUserLineProps = {
 }
 
 export function CCDetailsUserLine({children, className}: CCDetailsUserLineProps) {
-  return <div className={cn(className, 'w-fit flex gap-16 mt-8 max-w-[60%]')}>{children}</div>
+  return <div className={cn(className, 'flex-wrap w-full flex gap-x-12 gap-y-8 mt-4 bg-accent p-4 rounded-xl')}>{children}</div>
 }

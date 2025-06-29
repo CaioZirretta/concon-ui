@@ -12,7 +12,7 @@ export type User = UserList & {
   avatar: string; // url
   gender: Gender;
   phone: string;
-  residence?: string;
+  residence: string;
   building?: string;
   unit: string
   birthDate?: string;
