@@ -10,7 +10,7 @@ export type PageWrapperProps = {
 export function CCPageWrapper({ children, className }: PageWrapperProps) {
   const sidebar = useSidebar();
   return <section
-    className={cn(className, 'mt-10 p-6 w-[calc(100vw-3rem)] overflow-y-scroll')}
+    className={cn(className, 'mt-16 p-6 w-[calc(100vw-3rem)] overflow-y-scroll')}
     onClick={() => sidebar.setOpen(false)}
   >
     {children}
