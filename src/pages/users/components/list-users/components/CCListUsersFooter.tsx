@@ -1,12 +1,13 @@
 import { cn } from '@/lib/utils/utils.ts';
 import { PlusIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button.tsx';
-import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form.tsx';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet.tsx';
+import { Separator } from '@/components/ui/separator.tsx';
 
 type CCListUsersFooterProps = {
   className?: string,
@@ -26,7 +27,7 @@ const FormSchema = z.object({
   occupationTitle: z.string().nonempty(),
   currentContractStart: z.date(),
   currentContractEnd: z.date(),
-})
+});
 
 export function CCListUsersFooter({ className }: CCListUsersFooterProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -43,22 +44,25 @@ export function CCListUsersFooter({ className }: CCListUsersFooterProps) {
       unit: '',
       occupationTitle: '',
     },
-  })
+  });
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
   }
 
   return <footer className={cn(className, 'w-full mt-4')}>
-    <Drawer>
-      <DrawerTrigger asChild>
-        <Button><PlusIcon/>Novo Cliente</Button>
-      </DrawerTrigger>
-      <DrawerContent className="px-6">
-        <DrawerHeader>
-          <DrawerTitle>Novo Usuário</DrawerTitle>
-        </DrawerHeader>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button><PlusIcon/>Novo usuário</Button>
+      </SheetTrigger>
+      <SheetContent className="pl-6 pr-4">
+        <SheetHeader className="px-0 pt-3 pb-0">
+          <SheetTitle className="">Novo Usuário</SheetTitle>
+        </SheetHeader>
         <Form {...form}>
-          <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+          <form className="space-y-6 overflow-y-scroll" onSubmit={form.handleSubmit(onSubmit)}>
+            <span className="font-light">Informações Pessoais</span>
+            <Separator className="mt-2 mb-4"></Separator>
             <FormField
               control={form.control}
               name="name"
@@ -71,15 +75,15 @@ export function CCListUsersFooter({ className }: CCListUsersFooterProps) {
                 </FormItem>
               )}
             />
-            <Button className="w-1/12" type="submit" variant="default">Confirmar</Button>
           </form>
         </Form>
-        <DrawerFooter className="items-baseline px-0">
-          <DrawerClose asChild>
-            <Button className="w-1/12" variant="destructive">Cancelar</Button>
-          </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
+        <SheetFooter className="justify-end flex flex-row">
+          <Button className="w-1/3" variant="destructive">Cancelar</Button>
+          <SheetClose asChild>
+            <Button className="w-1/3" type="submit" variant="default">Confirmar</Button>
+          </SheetClose>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
   </footer>;
 }
