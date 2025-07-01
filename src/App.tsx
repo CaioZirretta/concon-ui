@@ -8,7 +8,7 @@ import { CCPageWrapper } from './components/utils/PageWrapper';
 export function App() {
   return (
     <BrowserRouter>
-      <SidebarProvider className="fixed w-fit" defaultOpen={false}>
+      <SidebarProvider defaultOpen={false}>
         <CCHeader/>
         <CCSidebar/>
 
