@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.tsx';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.tsx';
 import { userList } from '@/pages/users/mocks/user.mock.ts';
 import { CheckIcon, EllipsisIcon, XIcon } from 'lucide-react';
 import {
@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import type { UserList } from '@/pages/users/types/User.type.ts';
 import { useState } from 'react';
 import { capitalizar } from '@/lib/utils/utils.ts';
+import { CCListUsersFooter } from '@/pages/users/components/list-users/components/CCListUsersFooter.tsx';
 
 export function CCListUsersPage() {
   const [users, setUsers] = useState<UserList[]>(userList);
@@ -25,9 +26,8 @@ export function CCListUsersPage() {
     return () => navigate(path, { state: id });
   }
 
-  return <div className='mx-12'>
+  return <div>
     <Table className="w-full">
-      <TableCaption>Lista de usuários</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead >Nome</TableHead>
@@ -67,5 +67,7 @@ export function CCListUsersPage() {
         ))}
       </TableBody>
     </Table>
+
+    <CCListUsersFooter/>
   </div>;
 }
