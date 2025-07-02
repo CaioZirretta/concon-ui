@@ -13,3 +13,7 @@ export function fullGender(gender: Gender): string {
 
   return genders[gender];
 }
+
+export function gendersArray(): string[] {
+  return [Gender.MALE, Gender.FEMALE, Gender.OTHER]
+}
