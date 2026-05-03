@@ -1,11 +1,11 @@
-import type { User, UserList } from '@/pages/users/types/User.type.ts';
+import type { User, ListedUser } from '@/pages/users/types/User.type.ts';
 import { Gender } from '@/pages/users/enums/gender.enum.ts';
 
-export const user: Partial<UserList> = {
+export const user: Partial<ListedUser> = {
   name: 'Caio'
 }
 
-export const userList: UserList[] = [
+export const userList: ListedUser[] = [
   {
     id: "1",
     name: "João Silva",

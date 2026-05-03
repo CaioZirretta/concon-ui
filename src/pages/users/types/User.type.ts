@@ -1,6 +1,6 @@
 import { Gender } from '@/pages/users/enums/gender.enum.ts';
 
-export type UserList = {
+export type ListedUser = {
   id: string;
   name: string;
   email: string;
@@ -8,7 +8,7 @@ export type UserList = {
   isActive: boolean;
 }
 
-export type User = UserList & {
+export type User = ListedUser & {
   avatar: string; // url
   gender: Gender;
   phone: string;
