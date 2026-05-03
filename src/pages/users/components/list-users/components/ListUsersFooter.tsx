@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { fullGender, Gender, gendersArray } from '@/pages/users/enums/gender.enum.ts';
 import { useEffect, useState } from 'react';
 
-type CCListUsersFooterProps = {
+type ListUsersFooterProps = {
   className?: string,
 }
 
@@ -32,7 +32,7 @@ const FormSchema = z.object({
   currentContractEnd: z.date(),
 });
 
-export function CCListUsersFooter({ className }: CCListUsersFooterProps) {
+export function ListUsersFooter({ className }: ListUsersFooterProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -63,6 +63,7 @@ export function CCListUsersFooter({ className }: CCListUsersFooterProps) {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
+    form.reset();
   }
 
   if (loading) {
@@ -217,7 +218,6 @@ export function CCListUsersFooter({ className }: CCListUsersFooterProps) {
                 )}
               />
             </div>
-
           </form>
         </Form>
         <SheetFooter className="justify-end flex flex-row">

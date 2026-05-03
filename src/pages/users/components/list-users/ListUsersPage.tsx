@@ -12,9 +12,9 @@ import { useNavigate } from 'react-router-dom';
 import type { UserList } from '@/pages/users/types/User.type.ts';
 import { useState } from 'react';
 import { capitalizar } from '@/lib/utils/utils.ts';
-import { CCListUsersFooter } from '@/pages/users/components/list-users/components/CCListUsersFooter.tsx';
+import { ListUsersFooter } from '@/pages/users/components/list-users/components/ListUsersFooter.tsx';
 
-export function CCListUsersPage() {
+export function ListUsersPage() {
   const [users, setUsers] = useState<UserList[]>(userList);
   const navigate = useNavigate();
 
@@ -68,6 +68,6 @@ export function CCListUsersPage() {
       </TableBody>
     </Table>
 
-    <CCListUsersFooter/>
+    <ListUsersFooter/>
   </div>;
 }

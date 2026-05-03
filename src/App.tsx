@@ -1,4 +1,4 @@
-import { CCRoutes } from '@/CCRoutes.tsx';
+import { Routes } from '@/Routes.tsx';
 import { CCHeader } from '@/components/layout/header/CCHeader.tsx';
 import { CCSidebar } from '@/components/layout/sidebar/CCSidebar.tsx';
 import { SidebarProvider } from '@/components/ui/sidebar.tsx';
@@ -13,7 +13,7 @@ export function App() {
         <CCSidebar/>
 
         <CCPageWrapper>
-          <CCRoutes></CCRoutes>
+          <Routes></Routes>
         </CCPageWrapper>
       </SidebarProvider>
     </BrowserRouter>

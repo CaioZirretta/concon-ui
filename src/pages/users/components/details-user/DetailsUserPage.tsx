@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 import type { User } from '@/pages/users/types/User.type.ts';
 import { userMock } from '@/pages/users/mocks/user.mock.ts';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar.tsx';
-import { CCDetailsUserField } from '@/pages/users/components/details-user/components/CCDetailsUserField.tsx';
-import { CCDetailsUserLine } from '@/pages/users/components/details-user/components/CCDetailsUserLine.tsx';
+import { DetailsUserField } from '@/pages/users/components/details-user/components/DetailsUserField.tsx';
+import { DetailsUserLine } from '@/pages/users/components/details-user/components/DetailsUserLine.tsx';
 import { fullGender } from '@/pages/users/enums/gender.enum.ts';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { Button } from '@/components/ui/button.tsx';
 
-export function CCDetailsUserPage() {
+export function DetailsUserPage() {
   const { state } = useLocation();
   const [loading, setLoading] = useState<boolean>(true);
   const [user, setUser] = useState<User>();
@@ -65,18 +65,18 @@ export function CCDetailsUserPage() {
       </Tooltip>
     </div>
 
-    <CCDetailsUserLine>
-      <CCDetailsUserField fieldName="Unidade" fieldValue={user?.unit}/>
-      <CCDetailsUserField fieldName="Região" fieldValue={user?.building}/>
-      <CCDetailsUserField fieldName="Residência" fieldValue={user?.residence}/>
-      <CCDetailsUserField fieldName="Ocupação" fieldValue={user?.occupationTitle}/>
-    </CCDetailsUserLine>
+    <DetailsUserLine>
+      <DetailsUserField fieldName="Unidade" fieldValue={user?.unit}/>
+      <DetailsUserField fieldName="Região" fieldValue={user?.building}/>
+      <DetailsUserField fieldName="Residência" fieldValue={user?.residence}/>
+      <DetailsUserField fieldName="Ocupação" fieldValue={user?.occupationTitle}/>
+    </DetailsUserLine>
 
-    <CCDetailsUserLine>
-      <CCDetailsUserField fieldName="Telefone" fieldValue={user?.phone}/>
-      <CCDetailsUserField fieldName="E-mail" fieldValue={user?.email}/>
-      {user?.birthDate && <CCDetailsUserField fieldName="Dt. Nascimento" fieldValue={user?.birthDate}/>}
-      <CCDetailsUserField fieldName="Gênero" fieldValue={fullGender(user!.gender)}/>
-    </CCDetailsUserLine>
+    <DetailsUserLine>
+      <DetailsUserField fieldName="Telefone" fieldValue={user?.phone}/>
+      <DetailsUserField fieldName="E-mail" fieldValue={user?.email}/>
+      {user?.birthDate && <DetailsUserField fieldName="Dt. Nascimento" fieldValue={user?.birthDate}/>}
+      <DetailsUserField fieldName="Gênero" fieldValue={fullGender(user!.gender)}/>
+    </DetailsUserLine>
   </>;
 }
